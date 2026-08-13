@@ -45,24 +45,6 @@ const localBusinessSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script is:inline>
-      (function () {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        var root = document.documentElement;
-        root.classList.add("pre-power");
-        var done = false;
-        function powerOn() {
-          if (done) return;
-          done = true;
-          root.classList.remove("pre-power");
-        }
-        window.addEventListener("scroll", powerOn, { passive: true, once: true });
-        window.addEventListener("keydown", powerOn, { once: true });
-        window.addEventListener("pointerdown", powerOn, { once: true });
-        window.addEventListener("touchstart", powerOn, { passive: true, once: true });
-        setTimeout(powerOn, 4000);
-      })();
-    </script>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
