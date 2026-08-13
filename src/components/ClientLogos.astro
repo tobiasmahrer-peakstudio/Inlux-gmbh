@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import buchsiautoLogo from "../assets/clients/buchsiauto.png";
+import skullpotLogo from "../assets/clients/skullpot.png";
+import elaKosmetikLogo from "../assets/clients/ela-kosmetik.png";
+
+const clients = [
+  { company: "Swissbraids", logo: null },
+  { company: "Beauty by Esra Ay", logo: null },
+  { company: "Buchsiauto", logo: buchsiautoLogo },
+  { company: "Skullpot", logo: skullpotLogo },
+  { company: "E'la Kosmetik", logo: elaKosmetikLogo },
+];
+---
+
+<div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+  {clients.map((c) => (
+    <div
+      class="flex h-9 items-center opacity-70 transition duration-300 hover:opacity-100"
+      title={c.company}
+    >
+      {c.logo ? (
+        <Image
+          src={c.logo}
+          alt={c.company}
+          height={72}
+          class="h-9 w-auto object-contain [filter:brightness(0)_invert(1)]"
+        />
+      ) : (
+        <span class="text-sm font-semibold uppercase tracking-wider text-white">{c.company}</span>
+      )}
+    </div>
+  ))}
+</div>

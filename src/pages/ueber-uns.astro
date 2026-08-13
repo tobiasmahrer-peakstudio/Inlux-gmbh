@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import ClientLogos from "../components/ClientLogos.astro";
+import TestimonialsMarquee from "../components/TestimonialsMarquee.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { company } from "../data/site";
+import brandImage from "../assets/products/wandausleger.jpg";
+---
+
+<Layout
+  title="Über uns | Inlux GmbH – Werbetechnik seit 2017"
+  description="Inlux GmbH: seit 2017 in Kolliken, Schweiz. Eigene 500m² Produktion für Werbetechnik und Wanddekoration, Export in 35 Länder."
+  path="/ueber-uns"
+>
+  <section class="mx-auto max-w-4xl px-5 py-16 sm:py-20">
+    <h1 class="text-3xl font-extrabold sm:text-5xl">
+      Über <span class="glow-text">Inlux</span>
+    </h1>
+    <p class="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
+      Seit {company.founded} produzieren, importieren und exportieren wir aus unserer eigenen {company.productionArea} Produktionsstätte in {company.address.city} — in 35 Länder. Unsere Positionierung: <span class="font-semibold text-[var(--color-text)]">"{company.positioning}"</span>. Wir sind spezialisiert auf Werbetechnik, Wanddekoration und Beleuchtungssysteme.
+    </p>
+    <div class="glow-border mt-10 overflow-hidden rounded-2xl">
+      <Image
+        src={brandImage}
+        alt="Inlux Team Leuchtreklame-Schild"
+        width={1000}
+        height={667}
+        class="aspect-[3/2] w-full object-cover"
+      />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 pb-16">
+    <h2 class="text-center text-2xl font-bold sm:text-3xl">Unser Arbeitsprozess</h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-sm text-[var(--color-muted)]">
+      Vier klare Schritte, von der Beratung bis zur fertigen Montage.
+    </p>
+    <div class="mt-10">
+      <ProcessSteps />
+    </div>
+  </section>
+
+  <section class="pb-16">
+    <div class="mx-auto max-w-6xl px-5">
+      <h2 class="text-center text-2xl font-bold sm:text-3xl">Kunden<span class="gradient-text">stimmen</span></h2>
+      <p class="mx-auto mt-3 max-w-xl text-center text-sm text-[var(--color-muted)]">
+        Unter anderem vertrauen uns diese Unternehmen.
+      </p>
+      <div class="mt-8">
+        <ClientLogos />
+      </div>
+    </div>
+    <div class="mt-10">
+      <TestimonialsMarquee />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-5 pb-24 text-center">
+    <div class="glow-border rounded-3xl bg-[var(--color-surface)] px-8 py-14">
+      <h2 class="text-2xl font-bold sm:text-3xl">Lerne uns kennen</h2>
+      <p class="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-[var(--color-muted)]">
+        Schreib uns per WhatsApp — wir melden uns kurzfristig für ein unverbindliches Erstgespräch.
+      </p>
+      <div class="mt-7">
+        <WhatsAppButton label="Jetzt per WhatsApp anfragen" class="px-8 py-3.5 text-base" />
+      </div>
+    </div>
+  </section>
+</Layout>

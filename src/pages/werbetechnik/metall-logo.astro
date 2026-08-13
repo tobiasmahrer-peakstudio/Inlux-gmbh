@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import ProductDetailCTA from "../../components/ProductDetailCTA.astro";
+import { werbetechnikProducts } from "../../data/site";
+import { productImages } from "../../data/productImages";
+
+const product = werbetechnikProducts.find((p) => p.slug === "metall-logo")!;
+const image = productImages[product.slug];
+---
+
+<Layout
+  title="Metall-Logo Schweiz | Beleuchtete Metallschilder | Inlux GmbH"
+  description="Metall-Logo aus 2mm Blechzuschnitt mit farbiger LED-Beleuchtung, mit oder ohne Seitenwand — für Innen- und Aussenbereich. Jetzt per WhatsApp anfragen."
+  path="/werbetechnik/metall-logo"
+>
+  <section class="mx-auto max-w-4xl px-5 py-16 sm:py-20">
+    <a href="/werbetechnik" class="text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-neon)]">
+      ← Zurück zu Werbetechnik
+    </a>
+    <h1 class="mt-4 text-3xl font-extrabold sm:text-5xl">
+      <span class="glow-text">Metall</span>-Logo
+    </h1>
+    <p class="mt-5 text-base leading-relaxed text-[var(--color-muted)]">
+      Logo-Designs aus Metallplatten wirken mit farbiger LED-Hinterleuchtung besonders einzigartig — für Firmenlogos, private Designs oder individuelle Motive, im Innen- wie im Aussenbereich einsetzbar.
+    </p>
+
+    {image && (
+      <div class="glow-border mt-10 overflow-hidden rounded-2xl">
+        <Image src={image} alt="Metall-Logo mit Beleuchtung" width={1000} height={625} class="aspect-[8/5] w-full object-cover" />
+      </div>
+    )}
+
+    <div class="mt-12 grid gap-8 sm:grid-cols-2">
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Herstellung</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          In der Regel 2 mm starke Metallbleche, per CNC- oder Sublimationsverfahren geschnitten — auf Wunsch auch aus Stahl oder Aluminium. Der Entwurf entsteht digital und wird direkt auf die Platte übertragen.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Gestaltung</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Wunschgrösse und -form, mit oder ohne Seitenwand, in beliebiger Farbe lackiert und passend zum Design ausgeleuchtet — leicht und vielseitig montierbar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-5 pb-24">
+    <ProductDetailCTA whatsappMessage={product.whatsappMessage} pdfUrl={product.pdfUrl} />
+  </section>
+</Layout>

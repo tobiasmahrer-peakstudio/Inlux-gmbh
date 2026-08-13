@@ -1,0 +1,35 @@
+---
+import WhatsAppButton from "./WhatsAppButton.astro";
+
+interface Props {
+  whatsappMessage: string;
+  pdfUrl?: string;
+}
+
+const { whatsappMessage, pdfUrl } = Astro.props;
+---
+
+<div class="glow-border flex flex-col items-center gap-4 rounded-2xl bg-[var(--color-surface)] px-8 py-10 text-center sm:flex-row sm:justify-center sm:text-left">
+  <div class="flex-1">
+    <p class="font-semibold text-[var(--color-text)]">Interesse geweckt?</p>
+    <p class="mt-1 text-sm text-[var(--color-muted)]">
+      Jedes Projekt ist individuell — schreib uns kurz per WhatsApp und erhalte in wenigen Minuten eine erste Einschätzung.
+    </p>
+  </div>
+  <div class="flex flex-col gap-3 sm:flex-row">
+    {pdfUrl && (
+      <a
+        href={pdfUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="glow-border inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-[var(--color-text)]"
+      >
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        PDF Katalog
+      </a>
+    )}
+    <WhatsAppButton message={whatsappMessage} label="Jetzt per WhatsApp anfragen" class="text-sm" />
+  </div>
+</div>

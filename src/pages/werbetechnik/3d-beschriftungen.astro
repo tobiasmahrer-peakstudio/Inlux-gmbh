@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import ProductDetailCTA from "../../components/ProductDetailCTA.astro";
+import { werbetechnikProducts } from "../../data/site";
+import { productImages } from "../../data/productImages";
+
+const product = werbetechnikProducts.find((p) => p.slug === "3d-beschriftungen")!;
+const image = productImages[product.slug];
+---
+
+<Layout
+  title="3D-Beschriftungen Schweiz | Wandbeschriftung | Inlux GmbH"
+  description="3D-Beschriftungen und Wandbeschriftung aus Chrom oder Plexiglas, in verschiedenen Farben und Materialien — für einen markanten Auftritt. Jetzt per WhatsApp anfragen."
+  path="/werbetechnik/3d-beschriftungen"
+>
+  <section class="mx-auto max-w-4xl px-5 py-16 sm:py-20">
+    <a href="/werbetechnik" class="text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-neon)]">
+      ← Zurück zu Werbetechnik
+    </a>
+    <h1 class="mt-4 text-3xl font-extrabold sm:text-5xl">
+      <span class="glow-text">3D</span>-Beschriftungen
+    </h1>
+    <p class="mt-5 text-base leading-relaxed text-[var(--color-muted)]">
+      Wandbeschriftungen aus Chrom- oder Plexiglasmaterial ziehen die Aufmerksamkeit auf sich und sind zugleich eine dekorative Lösung für leere Wände — in Innen- und Aussenbereichen gleichermassen wirkungsvoll.
+    </p>
+
+    {image && (
+      <div class="glow-border mt-10 overflow-hidden rounded-2xl">
+        <Image src={image} alt="3D-Beschriftung Wandbeschriftung" width={1000} height={625} class="aspect-[8/5] w-full object-cover" />
+      </div>
+    )}
+
+    <div class="mt-12 grid gap-8 sm:grid-cols-2">
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Gestaltung</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Schriftart, Grösse, Farbe und begleitende Symbole werden ganz nach deinen Wünschen und deiner Zielgruppe gestaltet — meist mit Markenname, Slogan oder Logo.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Einsatzbereiche</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Häufig in Geschäften, Beauty-Salons und Büros zu finden, aber auch in Einkaufszentren und Hotels — dort erfüllen sie ihre Werbefunktion und wirken zugleich als stilvolles Dekor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-5 pb-24">
+    <ProductDetailCTA whatsappMessage={product.whatsappMessage} pdfUrl={product.pdfUrl} />
+  </section>
+</Layout>

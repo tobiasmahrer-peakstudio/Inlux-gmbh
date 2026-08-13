@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+import { company } from "../data/site";
+import logo from "../assets/brand/logo.png";
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/werbetechnik", label: "Werbetechnik" },
+  { href: "/wanddekoration", label: "Wanddekoration" },
+  { href: "/ueber-uns", label: "Über uns" },
+  { href: "/kontakt", label: "Kontakt" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-ink)]/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+    <a href="/" class="shrink-0">
+      <Image src={logo} alt="Inlux Team" height={36} class="h-9 w-auto" />
+    </a>
+
+    <nav class="hidden items-center gap-7 md:flex">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            "text-sm font-medium transition-colors hover:text-[var(--color-neon)]",
+            currentPath === item.href ? "text-[var(--color-neon)]" : "text-[var(--color-muted)]",
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href={company.phoneHref}
+      class="hidden items-center gap-2 rounded-full border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-neon)] hover:text-[var(--color-neon)] md:flex"
+    >
+      {company.phone}
+    </a>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--color-border)] text-[var(--color-text)] md:hidden"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" class="hidden flex-col gap-1 border-t border-[var(--color-border)] px-5 py-3 md:hidden">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class:list={[
+          "rounded-lg px-3 py-2 text-sm font-medium",
+          currentPath === item.href ? "text-[var(--color-neon)]" : "text-[var(--color-muted)]",
+        ]}
+      >
+        {item.label}
+      </a>
+    ))}
+    <a href={company.phoneHref} class="rounded-lg px-3 py-2 text-sm font-medium text-[var(--color-text)]">
+      {company.phone}
+    </a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const isHidden = menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden");
+    menu?.classList.toggle("flex");
+    toggle.setAttribute("aria-expanded", String(!!isHidden));
+  });
+</script>

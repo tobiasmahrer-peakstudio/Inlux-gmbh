@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import type { Product } from "../data/site";
+import { productImages } from "../data/productImages";
+import WhatsAppButton from "./WhatsAppButton.astro";
+
+interface Props {
+  product: Product;
+  headingLevel?: "h3" | "h2";
+}
+
+const { product, headingLevel = "h3" } = Astro.props;
+const Heading = headingLevel;
+const image = productImages[product.slug];
+---
+
+<article id={product.slug} class="glow-border flex flex-col overflow-hidden rounded-2xl bg-[var(--color-surface)] scroll-mt-24">
+  {image && (
+    <Image
+      src={image}
+      alt={product.name}
+      width={640}
+      height={400}
+      class="h-44 w-full object-cover"
+    />
+  )}
+  <div class="flex flex-1 flex-col p-6">
+    <Heading class="text-lg font-semibold text-[var(--color-text)]">{product.name}</Heading>
+    <p class="mt-2 flex-1 text-sm leading-relaxed text-[var(--color-muted)]">{product.description}</p>
+    {product.detailUrl ? (
+      <a
+        href={product.detailUrl}
+        class="btn-glow mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-xs font-semibold"
+      >
+        Mehr erfahren
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    ) : (
+      <WhatsAppButton message={product.whatsappMessage} label="Jetzt per WhatsApp anfragen" class="mt-5 w-full text-xs" />
+    )}
+  </div>
+</article>

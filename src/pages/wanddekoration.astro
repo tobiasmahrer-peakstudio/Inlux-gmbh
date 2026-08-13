@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { wanddekorationProducts } from "../data/site";
+---
+
+<Layout
+  title="Wanddekoration: MDF-Paneele, 3D-Wand & Spiegel | Inlux GmbH"
+  description="Hochwertige Wanddekoration von Inlux GmbH: MDF-Paneele, 3D-Wände und Spiegel mit Beleuchtung. In Wunschmassen gefertigt, Schweizer Qualität."
+  path="/wanddekoration"
+>
+  <section class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+    <div class="text-center">
+      <h1 class="text-3xl font-extrabold sm:text-5xl">
+        <span class="glow-text">Wanddekoration</span>
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">
+        Als Ergänzung zu unserer Werbetechnik gestalten wir Innenräume mit hochwertigen, beleuchteten Wandelementen — in Wunschmassen gefertigt.
+      </p>
+      <div class="mt-8">
+        <WhatsAppButton label="Projekt per WhatsApp besprechen" class="px-8 py-3.5 text-base" />
+      </div>
+    </div>
+
+    <h2 class="sr-only">Unsere Wanddekoration-Produkte</h2>
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {wanddekorationProducts.map((product) => (
+        <ProductCard product={product} headingLevel="h3" />
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-sm text-[var(--color-muted)]">
+        Kein festes Preisschema — jedes Projekt ist individuell. Schreib uns kurz per WhatsApp und erhalte in wenigen Minuten eine erste Einschätzung.
+      </p>
+    </div>
+  </section>
+</Layout>

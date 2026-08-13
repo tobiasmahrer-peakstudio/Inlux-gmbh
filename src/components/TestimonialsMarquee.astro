@@ -1,0 +1,41 @@
+---
+import { testimonials } from "../data/site";
+import TestimonialCard from "./TestimonialCard.astro";
+
+const track = [...testimonials, ...testimonials];
+---
+
+<div class="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+  <div class="marquee-track flex w-max gap-6">
+    {track.map((t) => (
+      <div class="w-80 shrink-0 sm:w-96">
+        <TestimonialCard testimonial={t} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

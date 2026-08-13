@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import ProductDetailCTA from "../../components/ProductDetailCTA.astro";
+import { werbetechnikProducts } from "../../data/site";
+import { productImages } from "../../data/productImages";
+
+const product = werbetechnikProducts.find((p) => p.slug === "orientierungsschilder")!;
+const image = productImages[product.slug];
+---
+
+<Layout
+  title="Orientierungsschilder Schweiz | Wegweiser | Inlux GmbH"
+  description="Wegweiser und Orientierungsschilder für Hotels, Restaurants und Einkaufszentren — beleuchtet oder unbeleuchtet, in Wunschgrösse. PDF-Katalog herunterladen."
+  path="/werbetechnik/orientierungsschilder"
+>
+  <section class="mx-auto max-w-4xl px-5 py-16 sm:py-20">
+    <a href="/werbetechnik" class="text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-neon)]">
+      ← Zurück zu Werbetechnik
+    </a>
+    <h1 class="mt-4 text-3xl font-extrabold sm:text-5xl">
+      <span class="glow-text">Orientierungsschilder</span>
+    </h1>
+    <p class="mt-5 text-base leading-relaxed text-[var(--color-muted)]">
+      Wegweiser machen die Orientierung in öffentlichen Bereichen einfach — ob in Hotels, Restaurants, Einkaufszentren oder Firmengebäuden. Beleuchtet oder unbeleuchtet, immer im firmenspezifischen Design.
+    </p>
+
+    {image && (
+      <div class="glow-border mt-10 overflow-hidden rounded-2xl">
+        <Image src={image} alt="Orientierungsschilder Wegweiser" width={1000} height={625} class="aspect-[8/5] w-full object-cover" />
+      </div>
+    )}
+
+    <div class="mt-12 grid gap-8 sm:grid-cols-2">
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Modelle</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Aussen-Wegweiser, Etagenwegweiser, Fluchtweg-Beschilderung und freistehende Schilder — aus Plexiglas, Glas, Holz oder anderen Materialien, in Wunschgrösse und Textgrösse.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Eigenschaften</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Stoss- und kratzfest, kälte-, wärme- und witterungsbeständig, leicht zu montieren und zu versetzen. Besonders in Bereichen wie Spitälern verhindern sie unnötigen Zeitverlust.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-5 pb-24">
+    <ProductDetailCTA whatsappMessage={product.whatsappMessage} pdfUrl={product.pdfUrl} />
+  </section>
+</Layout>

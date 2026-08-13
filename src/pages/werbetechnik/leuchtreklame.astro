@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import ProductDetailCTA from "../../components/ProductDetailCTA.astro";
+import { werbetechnikProducts } from "../../data/site";
+import { productImages } from "../../data/productImages";
+
+const product = werbetechnikProducts.find((p) => p.slug === "leuchtreklame")!;
+const image = productImages[product.slug];
+---
+
+<Layout
+  title="Leuchtreklame Schweiz | 3D-Kastenbuchstaben | Inlux GmbH"
+  description="3D-Kastenbuchstaben und Leuchtreklame in Wunschmassen: über 30 Modelloptionen, Edelstahl, Chrom, LED-beleuchtet. Jetzt per WhatsApp anfragen."
+  path="/werbetechnik/leuchtreklame"
+>
+  <section class="mx-auto max-w-4xl px-5 py-16 sm:py-20">
+    <a href="/werbetechnik" class="text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-neon)]">
+      ← Zurück zu Werbetechnik
+    </a>
+    <h1 class="mt-4 text-3xl font-extrabold sm:text-5xl">
+      <span class="glow-text">Leuchtreklame</span>
+    </h1>
+    <p class="mt-5 text-base leading-relaxed text-[var(--color-muted)]">
+      3D-Kastenbuchstaben gehören zu den wirkungsvollsten Werbemitteln überhaupt: Buchstaben und Logos werden digital entworfen, vor Ort auf die Fassade abgestimmt und anschliessend per CNC aus über 100 Buchstabentypen perfekt gefertigt.
+    </p>
+
+    {image && (
+      <div class="glow-border mt-10 overflow-hidden rounded-2xl">
+        <Image src={image} alt="Leuchtreklame 3D-Kastenbuchstaben" width={1000} height={625} class="aspect-[8/5] w-full object-cover" />
+      </div>
+    )}
+
+    <div class="mt-12 grid gap-8 sm:grid-cols-2">
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Materialien & Typen</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Edelstahl-, Aluminium- und Chrom-Kastenbuchstaben, Plexiglas-Buchstaben, Leuchtbuchstaben mit Glühbirne oder LED, Retro-Kastenbuchstaben sowie Ausführungen aus Naturmaterial wie Holz oder Moos — jede Variante individuell gestaltbar.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-[var(--color-text)]">Vorteile</h2>
+        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Gestaltung in Wunschschriftart und -farbe, hohe Wiedererkennbarkeit dank auffälligem 3D-Effekt, für Innen- und Aussenbereich geeignet. Beleuchtet sorgt deine Marke rund um die Uhr für Aufmerksamkeit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-5 pb-24">
+    <ProductDetailCTA whatsappMessage={product.whatsappMessage} pdfUrl={product.pdfUrl} />
+  </section>
+</Layout>

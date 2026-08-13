@@ -1,0 +1,110 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import ClientLogos from "../components/ClientLogos.astro";
+import TestimonialsMarquee from "../components/TestimonialsMarquee.astro";
+import heroImage from "../assets/products/leuchtreklame.jpg";
+import werbetechnikOverview from "../assets/home/werbetechnik-overview.jpg";
+import wanddekorationOverview from "../assets/home/wanddekoration-overview.jpg";
+---
+
+<Layout
+  title="Werbetechnik & Leuchtreklame Schweiz | Inlux GmbH"
+  description="Inlux GmbH fertigt Leuchtreklame, Wandausleger und Beschriftungen in eigener 500m² Produktion in Kolliken, Schweiz. Jetzt per WhatsApp anfragen."
+  path="/"
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -top-40 left-1/2 h-96 w-[42rem] -translate-x-1/2 rounded-full bg-[var(--color-neon)]/10 blur-3xl"></div>
+    <div class="relative mx-auto max-w-6xl px-5 py-20 text-center sm:py-28">
+      <h1 class="text-4xl font-extrabold leading-tight sm:text-6xl">
+        <span class="glow-text">Werbetechnik</span> &amp; Leuchtreklame<br class="hidden sm:block" /> aus eigener Produktion
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
+        Inlux GmbH produziert Leuchtreklamen, Wandausleger und Beschriftungen in der eigenen 500&nbsp;m² Produktionsstätte in Kolliken — von der Beratung bis zur Montage.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <WhatsAppButton label="Jetzt per WhatsApp anfragen" class="px-8 py-3.5 text-base" />
+        <a href="/werbetechnik" class="text-sm font-semibold text-[var(--color-text)] underline decoration-[var(--color-neon)] decoration-2 underline-offset-4 hover:text-[var(--color-neon)]">
+          Alle Produkte ansehen
+        </a>
+      </div>
+      <div class="glow-border mx-auto mt-14 max-w-4xl overflow-hidden rounded-2xl">
+        <Image
+          src={heroImage}
+          alt="Beleuchtete 3D-Leuchtreklame von Inlux GmbH"
+          width={1200}
+          height={514}
+          class="aspect-[21/9] w-full object-cover"
+          priority
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <h2 class="text-center text-2xl font-bold sm:text-3xl">Unsere Schwerpunkte</h2>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      <a href="/werbetechnik" class="glow-border group flex flex-col overflow-hidden rounded-2xl bg-[var(--color-surface)]">
+        <Image src={werbetechnikOverview} alt="Werbetechnik von Inlux GmbH" width={640} height={320} class="h-48 w-full object-cover" />
+        <div class="flex flex-1 flex-col p-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-neon)]">Kerngeschäft</span>
+          <h3 class="mt-2 text-xl font-bold">Werbetechnik</h3>
+          <p class="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
+            Leuchtreklame, Wandausleger, Inplex, Orientierungsschilder, Leuchtkasten, Lightbox mit Drehmotor, Metall-Logo und 3D-Beschriftungen.
+          </p>
+          <span class="mt-5 text-sm font-semibold text-[var(--color-neon)] group-hover:underline">Alle 8 Produkte ansehen →</span>
+        </div>
+      </a>
+      <a href="/wanddekoration" class="glow-border group flex flex-col overflow-hidden rounded-2xl bg-[var(--color-surface)]">
+        <Image src={wanddekorationOverview} alt="Wanddekoration von Inlux GmbH" width={640} height={320} class="h-48 w-full object-cover" />
+        <div class="flex flex-1 flex-col p-8">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-neon-2)]">Nebenangebot</span>
+          <h3 class="mt-2 text-xl font-bold">Wanddekoration</h3>
+          <p class="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
+            MDF-Paneele, 3D-Wände und Spiegel mit Beleuchtung — hochwertige Akzente für Innenräume.
+          </p>
+          <span class="mt-5 text-sm font-semibold text-[var(--color-neon-2)] group-hover:underline">Produkte ansehen →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <h2 class="text-center text-2xl font-bold sm:text-3xl">So läuft dein Projekt ab</h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-sm text-[var(--color-muted)]">
+      Vier Schritte von der ersten Idee bis zur fertigen Montage.
+    </p>
+    <div class="mt-10">
+      <ProcessSteps />
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="mx-auto max-w-6xl px-5">
+      <h2 class="text-center text-2xl font-bold sm:text-3xl">Was unsere <span class="gradient-text">Kunden sagen</span></h2>
+      <p class="mx-auto mt-3 max-w-xl text-center text-sm text-[var(--color-muted)]">
+        Unter anderem vertrauen uns diese Unternehmen.
+      </p>
+      <div class="mt-8">
+        <ClientLogos />
+      </div>
+    </div>
+    <div class="mt-10">
+      <TestimonialsMarquee />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-5 pb-24 text-center">
+    <div class="glow-border rounded-3xl bg-[var(--color-surface)] px-8 py-14">
+      <h2 class="text-2xl font-bold sm:text-3xl">Bereit für dein Projekt?</h2>
+      <p class="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-[var(--color-muted)]">
+        Jedes Projekt ist individuell — schreib uns kurz per WhatsApp und erhalte in wenigen Minuten eine erste Einschätzung.
+      </p>
+      <div class="mt-7">
+        <WhatsAppButton label="Jetzt per WhatsApp anfragen" class="px-8 py-3.5 text-base" />
+      </div>
+    </div>
+  </section>
+</Layout>

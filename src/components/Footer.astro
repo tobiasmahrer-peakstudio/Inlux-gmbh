@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import { company } from "../data/site";
+import logo from "../assets/brand/logo.png";
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-3">
+    <div>
+      <Image src={logo} alt="Inlux Team" height={32} class="h-8 w-auto" />
+      <p class="mt-3 text-sm text-[var(--color-muted)]">{company.positioning}</p>
+      <div class="mt-4 flex gap-4">
+        <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-[var(--color-muted)] transition-colors hover:text-[var(--color-neon)]">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.6.07 4.81 0 3.2-.01 3.56-.07 4.81-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.6.07-4.85.07-3.2 0-3.56-.01-4.81-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.6-.07-4.81 0-3.2.01-3.56.07-4.81C2.42 3.96 3.94 2.42 7.19 2.27 8.44 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.48.01-4.7.07-2.43.11-3.53 1.24-3.65 3.65-.06 1.22-.07 1.55-.07 4.7 0 3.15.01 3.48.07 4.7.12 2.41 1.22 3.54 3.65 3.65 1.22.06 1.55.07 4.7.07 3.15 0 3.48-.01 4.7-.07 2.43-.11 3.53-1.24 3.65-3.65.06-1.22.07-1.55.07-4.7 0-3.15-.01-3.48-.07-4.7-.12-2.41-1.22-3.54-3.65-3.65-1.22-.06-1.55-.07-4.7-.07Zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2Zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Zm4.8-2.15a1.07 1.07 0 1 1 0 2.14 1.07 1.07 0 0 1 0-2.14Z" /></svg>
+        </a>
+        <a href={company.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-[var(--color-muted)] transition-colors hover:text-[var(--color-neon)]">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.9h2.65l.4-3.08h-3.05V8.06c0-.89.25-1.5 1.52-1.5h1.63V3.84C15.95 3.8 15.06 3.72 14.03 3.72c-2.15 0-3.62 1.31-3.62 3.72v2.58H7.75v3.08h2.66V21h3.09Z" /></svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-[var(--color-text)]">Kontakt</p>
+      <ul class="mt-3 space-y-2 text-sm text-[var(--color-muted)]">
+        <li>{company.address.street}</li>
+        <li>{company.address.zip} {company.address.city}, {company.address.country}</li>
+        <li>
+          <a href={company.phoneHref} class="transition-colors hover:text-[var(--color-neon)]">{company.phone}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-[var(--color-text)]">Navigation</p>
+      <ul class="mt-3 space-y-2 text-sm text-[var(--color-muted)]">
+        <li><a href="/werbetechnik" class="transition-colors hover:text-[var(--color-neon)]">Werbetechnik</a></li>
+        <li><a href="/wanddekoration" class="transition-colors hover:text-[var(--color-neon)]">Wanddekoration</a></li>
+        <li><a href="/ueber-uns" class="transition-colors hover:text-[var(--color-neon)]">Über uns</a></li>
+        <li><a href="/kontakt" class="transition-colors hover:text-[var(--color-neon)]">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-[var(--color-border)] px-5 py-5 text-center text-xs text-[var(--color-muted)]">
+    © {year} Inlux GmbH. Alle Rechte vorbehalten. Seit {company.founded} in der Schweiz.
+  </div>
+</footer>

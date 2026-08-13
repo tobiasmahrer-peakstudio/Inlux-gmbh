@@ -1,0 +1,154 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { company } from "../data/site";
+
+const mapQuery = encodeURIComponent(
+  `${company.address.street}, ${company.address.zip} ${company.address.city}, ${company.address.country}`
+);
+---
+
+<Layout
+  title="Kontakt | Inlux GmbH – Werbetechnik Kolliken"
+  description="Kontaktiere Inlux GmbH per WhatsApp oder Telefon für dein Werbetechnik- oder Wanddekoration-Projekt. Standort: Hauptstrasse 130, Kolliken."
+  path="/kontakt"
+>
+  <section class="mx-auto max-w-4xl px-5 py-16 text-center sm:py-20">
+    <h1 class="text-3xl font-extrabold sm:text-5xl">
+      <span class="glow-text">Kontakt</span>
+    </h1>
+    <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--color-muted)]">
+      Der schnellste Weg zu uns: WhatsApp. Wir antworten in der Regel innert kurzer Zeit.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-5 pb-16">
+    <div class="grid gap-6 sm:grid-cols-2">
+      <a
+        href={`https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent("Hallo Inlux Team, ich interessiere mich für...")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="glow-border flex flex-col items-center gap-3 rounded-2xl bg-[var(--color-surface)] p-8 text-center"
+      >
+        <svg viewBox="0 0 24 24" class="h-10 w-10 text-[#25D366]" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413" />
+        </svg>
+        <p class="text-lg font-bold">WhatsApp</p>
+        <p class="text-sm text-[var(--color-muted)]">Schnellste Antwortzeit</p>
+      </a>
+
+      <a
+        href={company.phoneHref}
+        class="glow-border flex flex-col items-center gap-3 rounded-2xl bg-[var(--color-surface)] p-8 text-center"
+      >
+        <svg viewBox="0 0 24 24" class="h-10 w-10 text-[var(--color-neon)]" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path d="M4 5c0-.55.45-1 1-1h3.09a1 1 0 0 1 .98.8l.6 3a1 1 0 0 1-.27.94l-1.6 1.6a13.5 13.5 0 0 0 5.86 5.86l1.6-1.6a1 1 0 0 1 .94-.27l3 .6a1 1 0 0 1 .8.98V19c0 .55-.45 1-1 1h-1C10.16 20 4 13.84 4 6V5Z" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <p class="text-lg font-bold">Telefon</p>
+        <p class="text-sm text-[var(--color-muted)]">{company.phone}</p>
+      </a>
+    </div>
+
+    <div class="mt-10 text-center text-sm text-[var(--color-muted)]">
+      <p>{company.address.street}, {company.address.zip} {company.address.city}, {company.address.country}</p>
+    </div>
+
+    <div class="glow-border mt-6 overflow-hidden rounded-2xl">
+      <iframe
+        title="Standort Inlux GmbH"
+        src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+        class="h-72 w-full grayscale invert-[0.92] contrast-[1.1]"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-xl px-5 pb-24">
+    <details class="glow-border rounded-2xl bg-[var(--color-surface)] p-6">
+      <summary class="cursor-pointer text-sm font-semibold text-[var(--color-text)]">
+        Lieber per Kontaktformular? (niedrigste Priorität — WhatsApp ist schneller)
+      </summary>
+      <form id="kontakt-form" class="mt-6 space-y-4">
+        <!-- Honeypot: hidden from real users, bots tend to fill every field -->
+        <div class="hidden" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <div>
+          <label for="name" class="block text-xs font-medium text-[var(--color-muted)]">Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            class="mt-1 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-ink)] px-3 py-2 text-sm text-[var(--color-text)] outline-none focus:border-[var(--color-neon)]"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-xs font-medium text-[var(--color-muted)]">E-Mail</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="mt-1 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-ink)] px-3 py-2 text-sm text-[var(--color-text)] outline-none focus:border-[var(--color-neon)]"
+          />
+        </div>
+        <div>
+          <label for="message" class="block text-xs font-medium text-[var(--color-muted)]">Nachricht</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            class="mt-1 w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-ink)] px-3 py-2 text-sm text-[var(--color-text)] outline-none focus:border-[var(--color-neon)]"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn-glow w-full rounded-full px-6 py-3 text-sm font-semibold">
+          Nachricht senden
+        </button>
+        <p id="kontakt-status" class="text-sm" role="status" aria-live="polite"></p>
+      </form>
+    </details>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById("kontakt-form") as HTMLFormElement | null;
+  const status = document.getElementById("kontakt-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!status) return;
+
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    status.textContent = "";
+    status.className = "text-sm";
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const res = await fetch("/api/kontakt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+
+      if (res.ok && result.ok) {
+        status.textContent = "Danke! Deine Nachricht wurde gesendet, wir melden uns bald.";
+        status.className = "text-sm text-[var(--color-neon)]";
+        form.reset();
+      } else {
+        throw new Error(result.error || "unknown");
+      }
+    } catch {
+      status.textContent = "Senden fehlgeschlagen. Schreib uns bitte direkt per WhatsApp.";
+      status.className = "text-sm text-red-400";
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+</script>

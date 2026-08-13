@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { werbetechnikProducts } from "../data/site";
+---
+
+<Layout
+  title="Werbetechnik: Leuchtreklame, Wandausleger & mehr | Inlux GmbH"
+  description="Leuchtreklame, Wandausleger, Leuchtkasten, 3D-Beschriftungen und mehr — Werbetechnik in Wunschmassen aus eigener Schweizer Produktion. Jetzt per WhatsApp anfragen."
+  path="/werbetechnik"
+>
+  <section class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+    <div class="text-center">
+      <h1 class="text-3xl font-extrabold sm:text-5xl">
+        <span class="glow-text">Werbetechnik</span> Schweiz
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">
+        Von Leuchtreklame bis 3D-Beschriftung — wir fertigen deine Werbetechnik in Wunschmassen, in unserer eigenen 500&nbsp;m² Produktionsstätte.
+      </p>
+      <div class="mt-8">
+        <WhatsAppButton label="Projekt per WhatsApp besprechen" class="px-8 py-3.5 text-base" />
+      </div>
+    </div>
+
+    <h2 class="sr-only">Unsere Werbetechnik-Produkte</h2>
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {werbetechnikProducts.map((product) => (
+        <ProductCard product={product} headingLevel="h3" />
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-sm text-[var(--color-muted)]">
+        Kein festes Preisschema — jedes Projekt ist individuell. Schreib uns kurz per WhatsApp und erhalte in wenigen Minuten eine erste Einschätzung.
+      </p>
+    </div>
+  </section>
+</Layout>
