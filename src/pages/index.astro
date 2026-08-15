@@ -5,7 +5,7 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 import ProcessSteps from "../components/ProcessSteps.astro";
 import ClientLogos from "../components/ClientLogos.astro";
 import TestimonialsMarquee from "../components/TestimonialsMarquee.astro";
-import heroImage from "../assets/products/leuchtreklame.jpg";
+import heroImage from "../assets/home/team-hero.png";
 import werbetechnikOverview from "../assets/products/inplex.jpg";
 import wanddekorationOverview from "../assets/products/3d-wand.jpg";
 ---
@@ -30,15 +30,18 @@ import wanddekorationOverview from "../assets/products/3d-wand.jpg";
           Alle Produkte ansehen
         </a>
       </div>
-      <div class="glow-border mx-auto mt-14 max-w-4xl overflow-hidden rounded-2xl">
+      <div class="glow-border relative mx-auto mt-14 max-w-4xl overflow-hidden rounded-2xl">
         <Image
           src={heroImage}
-          alt="Beleuchtete 3D-Leuchtreklame von Inlux GmbH"
+          alt="Das Inlux Team vor der eigenen beleuchteten Leuchtreklame"
           width={1200}
-          height={514}
-          class="aspect-[21/9] w-full object-cover"
+          height={675}
+          class="aspect-[16/9] w-full object-cover"
           priority
         />
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-6 py-4 text-left">
+          <p class="text-sm font-medium text-white">Platzhaltertext — Unser Team, Inlux GmbH</p>
+        </div>
       </div>
     </div>
   </section>
